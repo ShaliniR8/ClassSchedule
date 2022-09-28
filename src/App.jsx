@@ -1,5 +1,7 @@
+import './components/Course.css'
 import Banner from "./components/Banner.jsx"
 import CourseList from "./components/CourseList.jsx"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const schedule = {
   "title": "CS Courses for 2018-2019",
@@ -41,7 +43,7 @@ const App = () => {
       {Banner(schedule.title)}
       </header>
 
-      <div>
+      <div className="course-list">
       { Object.entries(schedule.courses).map(([id, course]) => <CourseList key={id} course={course} />) }
       </div>
 
