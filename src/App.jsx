@@ -11,37 +11,15 @@ const Main = () => {
   if (isLoading) return <h1>Loading user data...</h1>;
   if (!data) return <h1>No user data found</h1>;
 
-  return [data.title];
+  return [Banner(data.title), <div className="course-list">{Object.entries(data.courses).map(([id, course]) => <CourseList key={id} course={course} />)}</div>];
 }
 
 const queryClient = new QueryClient();
 
-// const App = () => {
-
-//   return (
-//     <div className="App">
-//       {/* <header className="App-header">
-//       {Banner(schedule.title)}
-//       </header> */}
-//       <QueryClientProvider client={queryClient}>
-//         <div className="container">
-//           <Main />
-//         </div>
-//       </QueryClientProvider>
-
-//       {/* <div className="course-list">
-//       { Object.entries(schedule.courses).map(([id, course]) => <CourseList key={id} course={course} />) }
-//       </div> */}
-
-//     </div>
-//   );
-// };
-
-
 const App = () =>{
 return(
   <QueryClientProvider client={queryClient}>
-    <div className="container">
+    <div className="App">
       <Main />
     </div>
   </QueryClientProvider>
