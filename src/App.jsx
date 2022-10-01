@@ -22,9 +22,10 @@ import { useJsonQuery } from './utilities/fetch';
 //     </div>
 //   );
 // };
+const queryClient = new QueryClient();
 const App = () => 
  {
-  const { data, status } = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php");
+  const [data, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php");
   return (
     <div className="App">
       {status === "error" && <p>Error fetching data</p>}
