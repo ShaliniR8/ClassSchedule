@@ -24,18 +24,13 @@ const TermSelector = ({selection, setSelection}) => (
   </div>
 );
 
-const Term = ({selection}) => (
-  <div className="card" >
-  { terms[selection] }
-  </div>
-);
+export const Term = ({selection}) => selection
 
-const TermPage = () => {
+const TermPage = ({courses}) => {
   const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
   return (
     <div>
       <TermSelector selection={selection} setSelection={setSelection} />
-      
       <Term selection={selection} />
     </div>
   );
