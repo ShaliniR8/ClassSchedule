@@ -1,6 +1,8 @@
 import './components/Course.css'
 import Banner from "./components/Banner.jsx"
 import CourseList from "./components/CourseList.jsx"
+import TermFilter from './components/TermFilter';
+import TermPage from './components/TermPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useJsonQuery } from './utilities/fetch';
@@ -20,6 +22,8 @@ const App = () =>{
 return(
   <QueryClientProvider client={queryClient}>
     <div className="App">
+      {/* <TermFilter></TermFilter> */}
+      <TermPage></TermPage>
       <Main />
     </div>
   </QueryClientProvider>

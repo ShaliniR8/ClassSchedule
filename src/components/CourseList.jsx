@@ -5,7 +5,7 @@ const CourseList = ({course}) => (
           <div className="card-body">
           <h3 className="card-title"> {course.term} CS {course.number} </h3>
           <p className="card-text"> {course.title} </p>
-          <div class="card-footer">
+          <div className="card-footer">
           <p className="card-text"> {course.meets} </p>
           </div>
           </div>
