@@ -29,8 +29,8 @@ const TermSelector = ({selection, setSelection}) => (
 const Term = ({courses, selection}) => {
   const term = terms[selection]
   const arr = Object.entries(courses)
-  const filtered = arr.filter(([key, value]) => value["term"] === term)
-  return (<div className="card" ><div className="course-list">{filtered.map(([id, course]) => <CourseList key={id} course={course} />)}</div></div>)
+  const filtered = Object.entries([arr.filter(([key, value]) => value["term"] === term)])
+  return (<div className="card">{filtered.map(([id, courses]) => <CourseList key={id} courses={courses} />)}</div>)
 }
 
 const TermPage = ({courses}) => {
