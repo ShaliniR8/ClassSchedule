@@ -1,9 +1,11 @@
 import { useState } from "react";
+import "./Course.css"
+import CourseList from "./CourseList";
 
 const terms = {
-  Fall: 'Fall Courses...',
-  Winter: 'Winter Courses...',
-  Spring: 'Spring Courses...'
+  Fall: "Fall",
+  Winter: "Winter",
+  Spring: "Spring"
 };
 
 const TermButton = ({term, selection, setSelection}) => (
@@ -24,14 +26,19 @@ const TermSelector = ({selection, setSelection}) => (
   </div>
 );
 
-export const Term = ({selection}) => selection
+const Term = ({courses, selection}) => {
+  const term = terms[selection]
+  const arr = Object.entries(courses)
+  const filtered = arr.filter(([key, value]) => value["term"] === term)
+  return (<div className="card" ><div className="course-list">{filtered.map(([id, course]) => <CourseList key={id} course={course} />)}</div></div>)
+}
 
 const TermPage = ({courses}) => {
   const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
   return (
     <div>
       <TermSelector selection={selection} setSelection={setSelection} />
-      <Term selection={selection} />
+      <Term courses={courses} selection = {selection} />
     </div>
   );
  

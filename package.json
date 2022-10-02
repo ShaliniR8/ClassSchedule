@@ -1,6 +1,7 @@
 {
   "name": "vite-template-react",
   "version": "1.2.0",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "dev": "vite",
