@@ -26,9 +26,9 @@ const queryClient = new QueryClient();
 const App = () =>{
 return(
   <QueryClientProvider client={queryClient}>
-    <div className="App">
+      <div className="container">
       <Main />
-    </div>
+      </div>
   </QueryClientProvider>
 )
 };

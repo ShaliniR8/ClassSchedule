@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Course.css"
 import CourseList from "./CourseList";
+import CoursePage from "./CoursePage";
 
 const terms = {
   Fall: "Fall",
@@ -30,7 +31,7 @@ const Term = ({courses, selection}) => {
   const term = terms[selection]
   const arr = Object.entries(courses)
   const filtered = Object.entries([arr.filter(([key, value]) => value["term"] === term)])
-  return (<div className="card">{filtered.map(([id, courses]) => <CourseList key={id} courses={courses} />)}</div>)
+  return (<div className="card">{filtered.map(([id, courses]) => <CoursePage key={id} courses={courses} />)}</div>)
 }
 
 const TermPage = ({courses}) => {
