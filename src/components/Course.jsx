@@ -5,6 +5,9 @@ const Course = ({id, course, selected, toggleSelected}) => (
           <div className={`card-body ${selected.includes(id) ? 'selected' : ''}`}>
           <h3 className="card-title"> {course.term} CS {course.number} </h3>
           <p className="card-text"> {course.title} </p>
+          {/* <p> {selected.includes(id)? selected:''} </p> */}
+
+          
           <div className="card-footer">
           <p className="card-text"> {course.meets} </p>
           </div>

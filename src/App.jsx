@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useJsonQuery } from './utilities/fetch';
 
+
 const Main = () => {
   const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
  
@@ -17,19 +18,18 @@ const Main = () => {
 
   return [Banner(data.title) ,Object.entries([data.courses]).map(([id,courses]) => <TermPage key = {id} courses={courses} />)];
 
-
-  // return [Banner(data.title), <div className="course-list">{Object.entries(data.courses).map(([id, course]) => <CourseList key={id} course={course} />)}</div>];
 }
 
 const queryClient = new QueryClient();
 
 const App = () =>{
 return(
+<div className="container">
+      
   <QueryClientProvider client={queryClient}>
-      <div className="container">
       <Main />
-      </div>
   </QueryClientProvider>
+</div>
 )
 };
 
