@@ -8,7 +8,7 @@ const Cart = ({selected, courses}) => (
           
             <div className="list-group">
             {
-              courses.map(([id, course]) =>   id===courseid? <li className="list-group-item d-flex justify-content-between align-items-center"> {course.number}:{course.title} <div className="badge badge-pill badge-primary">{course.meets}</div></li>  :'' )
+              courses.map(([id, course]) =>   id===courseid? <li className="list-group-item d-flex justify-content-between align-items-center "> {course.number}:{course.title} <div className="badge badge-pill badge-primary">{course.meets}</div></li>  :'' )
             }
           </div>
         ))
