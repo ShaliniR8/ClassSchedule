@@ -1,10 +1,10 @@
 import './Course.css'
 import Course from './Course';
 
-const CourseList = ({courses, selected, toggleSelected, conflict, toggleConflict}) => (
+const CourseList = ({courses, selected, useStateToggler, conflict}) => (
   <div className="course-list ">
     {
-      courses.map(([id, course]) => <Course key={id} id={id} course={course} selected={selected} toggleSelected={toggleSelected} conflict={conflict} toggleConflict={toggleConflict}/>)
+      courses.map(([id, course]) => <Course key={id} id={id} course={course} selected={selected} useStateToggler={useStateToggler} conflict={conflict}/>)
     }
   </div>
 );
