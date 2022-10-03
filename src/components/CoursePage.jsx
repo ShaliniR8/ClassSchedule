@@ -5,26 +5,25 @@ import Cart from './Cart';
 import { timeAndDay, checkConflict } from '../utilities/timeOperations';
 
 const CoursePage = ({courses}) => {
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState([])
   const [conflict, setConflict] = useState([])
   
   
-  const useStateToggler = (item, selectedTime) => {
-    console.log("item: ", item)
-    console.log("SelectedB: ", selected)
-    console.log("ConflictB: ", conflict)
+  const useStateToggler = (item, selectedTime, selected, conflict) => {
     const arr1 = Object.entries(courses).map(([id, course]) => course )  
     const arr2 = arr1.filter((x) => x[0] !== item)
     const tempConflict = arr2.filter((x) => checkConflict(selectedTime, x[1].meets))
     const arr3 = Object.entries(tempConflict).map(([id, course])=> course[0])
-    console.log("selected.includes(item) || conflict.includes(item)", selected.includes(item),  conflict.includes(item))
-    setSelected((selected.includes(item) || conflict.includes(item))? selected.filter(x => x !== item) : [...selected, item])
-    setConflict(selected.includes(item)? conflict.filter((x)=> arr3.includes(x)===false):conflict.concat(arr3))
-    console.log("Selected: ", selected)
-    console.log("Conflict: ", conflict)
+
+    setSelected(
+      (selected.includes(item)? selected.filter(x => x !== item): (conflict.includes(item)? selected : [...selected, item]))
+    )
+    setConflict(
+      (selected.includes(item)? conflict.filter((x) => arr3.includes(x)===false):(conflict.includes(item)? conflict: conflict.concat(arr3) ) )
+    )
+
 
   }
-
 
     return (
     <div>
