@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./css/Course.css"
-import CourseList from "./CourseList";
 import CoursePage from "./CoursePage";
 
 const terms = {
@@ -11,7 +10,7 @@ const terms = {
 
 const TermButton = ({term, selection, setSelection}) => (
   <div>
-    <input type="radio" id={term} className="btn-check" checked={term === selection} autoComplete="off"
+    <input type="radio" id={term} className="btn-check mr-2" checked={term === selection} autoComplete="off"
       onChange={() => setSelection(term)} />
     <label className="btn btn-success mb-1 p-2" htmlFor={term}>
     { term }

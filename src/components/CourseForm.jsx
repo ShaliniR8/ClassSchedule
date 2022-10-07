@@ -1,13 +1,14 @@
 // import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const validateUserData = (key, val) => {
   switch (key) {
     case 'title':
       return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
-    case 'time':
-      return /^\w+@\w+[.]\w+/.test(val) ? '' : ''
+    case 'meets':
+      if (val==='') return ''
+      return /((M|Tu|W|Th|F)+ \d\d?:\d\d-\d\d?:\d\d)/.test(val) ? '' : 'must contain days and start-end, e.g., MWF 12:00-13:20'
     default: return '';
   }
 };
@@ -15,7 +16,7 @@ const validateUserData = (key, val) => {
 const InputField = ({name, text, state, change}) => (
   <div className="mb-3">
     <label htmlFor={name} className="form-label">{text}</label>
-    <input className="form-control" id={name} name={name} 
+    <input className="form-control" id={name} name={name}
       defaultValue={state.values?.[name]} onChange={change} />
     <div className="invalid-feedback">{state.errors?.[name]}</div>
   </div>
@@ -32,9 +33,11 @@ const ButtonBar = ({message, disabled}) => {
   );
 };
 
-const CourseForm = ({course}) => {
+const CourseForm = ({data}) => {
 //   const [update, result] = useDbUpdate(`/users/${user.id}`);
-  const [state, change] = useFormData(validateUserData, course);
+  const {id} = useParams()
+  // console.log(Object.entries(courses))
+  const [state, change] = useFormData(validateUserData, data.courses[id]);
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
@@ -43,9 +46,9 @@ const CourseForm = ({course}) => {
   };
 
   return (
-    <form onSubmit noValidate className={state.errors ? 'was-validated' : null}>
-      <InputField name="title" text="Course Title" state={state} change={change} />
-      <InputField name="time" text="Meeting Time" state={state} change={change} />
+    <form onSubmit className={state.errors ? 'was-validated' : null}>
+      <InputField name="title" text="Course Title" state={state} change={change}/>
+      <InputField name="meets" text="Meeting Time" state={state} change={change} />
       {/* <ButtonBar /> */}
       <Link to='/'> Cancel </Link>
     </form>
