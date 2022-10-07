@@ -1,8 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Main from './components/Main';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import CourseForm from './components/CourseForm';
 import useJsonQuery from './utilities/fetch';
+import AppRoutes from './components/AppRoutes';
 
 
 const url = 'https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php'
@@ -16,12 +14,7 @@ const App = () =>{
     
   return(
   <div className="container">
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main data={data} />} />
-        <Route path="/course_form/:id" element={<CourseForm data={data}/>} />
-      </Routes>
-      </BrowserRouter>
+      <AppRoutes data={data}/>
   </div>
   )
 };
