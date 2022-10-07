@@ -1,4 +1,4 @@
-import './Course.css'
+import './css/Course.css'
 import Course from './Course';
 
 const CourseList = ({courses, selected, useStateToggler, conflict}) => (

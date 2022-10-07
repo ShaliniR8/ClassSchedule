@@ -1,4 +1,4 @@
-import './Course.css'
+import './css/Course.css'
 import { checkConflict, timeAndDay } from '../utilities/timeOperations'; 
 
 const Course = ({id, course, selected, useStateToggler, conflict}) => (

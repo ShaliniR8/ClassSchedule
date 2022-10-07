@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Course.css"
+import "./css/Course.css"
 import CourseList from "./CourseList";
 import CoursePage from "./CoursePage";
 

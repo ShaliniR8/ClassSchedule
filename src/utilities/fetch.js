@@ -6,7 +6,9 @@ const fetchJson = async (url) => {
   return response.json();
 };
 
-export const useJsonQuery = (url) => {
+const useJsonQuery = (url) => {
   const { data, isLoading, error } = useQuery(["schedule"], () => fetchJson(url));
   return [ data, isLoading, error ];
 };
+
+export default useJsonQuery;

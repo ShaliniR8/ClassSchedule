@@ -1,4 +1,4 @@
-import './Modal.css';
+import './css/Modal.css';
 
 // https://codebuckets.com/2021/08/08/bootstrap-modal-dialog-in-react-without-jquery/
 
