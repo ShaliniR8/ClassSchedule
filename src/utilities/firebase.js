@@ -18,7 +18,7 @@ const database = getDatabase(firebase);
 export const useDbData = (path) => {
   const [data, setData] = useState();
   const [error, setError] = useState(null);
-
+ 
   useEffect(() => (
     onValue(ref(database, path), (snapshot) => {
      setData( snapshot.val() );

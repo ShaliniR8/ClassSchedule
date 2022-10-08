@@ -1,6 +1,6 @@
-// import { useDbUpdate } from '../utilities/firebase';
+import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 const validateUserData = (key, val) => {
   switch (key) {
@@ -23,34 +23,35 @@ const InputField = ({name, text, state, change}) => (
 )
 
 const ButtonBar = ({message, disabled}) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div className="d-flex">
       <button type="button" className="btn btn-outline-dark me-2" onClick={() => navigate(-1)}>Cancel</button>
-      <button type="submit" className="btn btn-primary me-auto" disabled={disabled}>Submit</button>
+      <button type="submit" className="btn btn-primary me-auto" disabled={disabled} >Submit</button>
       <span className="p-2">{message}</span>
     </div>
   );
 };
 
 const CourseForm = ({data}) => {
-//   const [update, result] = useDbUpdate(`/users/${user.id}`);
   const {id} = useParams()
-  // console.log(Object.entries(courses))
+  const navigate = useNavigate()
+  const [update, result] = useDbUpdate(`/course_form/${id}`);
   const [state, change] = useFormData(validateUserData, data.courses[id]);
   const submit = (evt) => {
     evt.preventDefault();
-    if (!state.errors) {
+    if (!state.errors && state.values!==data.courses[id]) {
       update(state.values);
+      navigate(-1)
     }
   };
 
   return (
-    <form onSubmit className={state.errors ? 'was-validated' : null}>
+    <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
       <InputField name="title" text="Course Title" state={state} change={change}/>
       <InputField name="meets" text="Meeting Time" state={state} change={change} />
-      {/* <ButtonBar /> */}
-      <Link to='/'> Cancel </Link>
+      <ButtonBar message={result?.message} />
+      {/* <Link to='/'> Cancel </Link> */}
     </form>
   )
 
