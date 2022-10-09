@@ -8,7 +8,7 @@ const AppRoutes = ({data}) =>(
      <BrowserRouter>
           <Routes>
           <Route path="/" element={<Main data={data} />} />
-          <Route path="/course_form/:id" element={<CourseForm data={data}/>} />
+          <Route path="/courses/:id" element={<CourseForm data={data}/>} />
           </Routes>
      </BrowserRouter>
 

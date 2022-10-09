@@ -1,6 +1,5 @@
-.modal {
+/* .modal {
   display: block;
-  visibility: hidden;
 }
 
 .modal-show {
@@ -10,7 +9,7 @@
 } 
 
 .modal-content  {
-  opacity: 0; 
+  opacity: inherit; 
 }
 
 .modal-show .modal-content  {
@@ -20,4 +19,4 @@
 
 .modal-header {
   margin-left: auto;
-}
+} */
