@@ -49,6 +49,7 @@ const CourseForm = ({data}) => {
 
   return (
     <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
+      {/* <input type="hidden" id="uid" name="custId" value={data.ad}></input> */}
       <InputField name="title" text="Course Title" state={state} change={change}/>
       <InputField name="meets" text="Meeting Time" state={state} change={change} />
       <ButtonBar message={result?.message} />
