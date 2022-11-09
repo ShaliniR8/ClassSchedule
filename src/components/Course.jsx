@@ -22,7 +22,7 @@ const ShowEditButton = ({id}) => {
 
 const Course = ({id, course, selected, useStateToggler, conflict}) => (
      <>
-     <div className="card m-1 p-2"> 
+     <div className="card m-1 p-2" data-cy="course"> 
           <ShowEditButton id = {id}/>
           <div className="card m-1 p-2" onClick={() => {useStateToggler(id, course.meets, selected, conflict) }}>
           <div className={`card-body ${conflict.includes(id)? "bi bi-x-circle-fill" : (selected.includes(id)? 'selected' : '')}`}>
